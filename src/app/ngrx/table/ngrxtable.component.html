@@ -1,0 +1,31 @@
+<md-card *ngIf="selTable">
+  <md-card-title>Add or Update Table</md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <form #userForm="ngForm">
+      <div layout="row" layout-margin>
+        <md-input-container flex>
+          <input md-input
+                      #displayNameElement
+                      #displayNameControl="ngModel"
+                      type="text" 
+                      placeholder="Table Name" 
+                      [(ngModel)]="selTable.name" 
+                      name="table_name" 
+                      maxlength="30" 
+                      required>
+              <md-hint align="start">
+                <span [hidden]="displayNameControl.pristine || !displayNameControl.errors?.required" class="tc-red-600">Display Name is required!</span>
+              </md-hint>
+              <md-hint align="end">{{displayNameElement.value.length}} / 20</md-hint>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <button md-raised-button color="primary" [disabled]="!userForm.form.valid" *ngIf="addOrUpdate" (click)="save()">Save</button>
+    <button md-raised-button color="warn" *ngIf="!addOrUpdate" (click)="update()" [disabled]="!userForm.form.valid">Update</button>
+    <button md-raised-button color="warn" *ngIf="!addOrUpdate" (click)="delete()">Delete</button>
+  </md-card-actions>
+</md-card>

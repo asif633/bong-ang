@@ -1,0 +1,36 @@
+<td-layout-nav logo="assets:covalent" class="light-blue-red">
+    <div toolbar-content layout="row" layout-align="center center" flex>
+        <span>Angular2 Ngrx App Setting</span>
+        <span flex></span>
+        <!--<a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank">
+            <md-icon>chrome_reader_mode</md-icon>
+        </a>
+        <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank">
+            <md-icon svgIcon="assets:github"></md-icon>
+        </a>-->
+    </div>
+    <md-card class="bgc-lime-50">
+        <md-tab-group md-stretch-tabs>
+            <md-tab>
+                <template md-tab-label>App Information</template>
+                <app-ngrxappcontent></app-ngrxappcontent>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>Model Information</template>
+                <app-ngrxtablecontent></app-ngrxtablecontent>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>Fields Information</template>
+                <app-ngrxfieldcontent></app-ngrxfieldcontent>
+            </md-tab>
+        </md-tab-group>
+
+    </md-card>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Copyright &copy; 2017 Iphoidtech Pvt. Ltd. All rights reserved</span>
+      <span flex></span>
+      <md-icon class="md-icon-ux" svgIcon="assets:covalent-mark"></md-icon>
+    </div>
+  </td-layout-footer>
+</td-layout-nav>

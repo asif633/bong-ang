@@ -1,0 +1,21 @@
+<div layout-gt-md="row" layout-margin>
+  <div flex-gt-xs="50">
+      <app-ngrxapps 
+          [data]="apps$ | async" 
+          (selectedApp)="selectApp($event)"
+          (addUpdate)="addOrUpdateAppEvent($event)"                   
+          >
+      </app-ngrxapps>
+  </div>
+  <div flex-gt-xs="50">
+    <app-ngrxapp
+              [selApp]="selApp"
+              [addOrUpdate]="addOrUpdateApp"
+              (addSubmit)="addApp($event)"
+              (updateSubmit)="updateApp($event)"
+              (deleteSubmit)="deleteApp($event)"
+              >
+    </app-ngrxapp>
+  </div>
+</div>
+     

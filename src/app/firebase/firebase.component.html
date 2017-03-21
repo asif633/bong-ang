@@ -1,0 +1,35 @@
+<td-layout-nav logo="assets:covalent" class="light-blue-red">
+  <div toolbar-content layout="row" layout-align="center center" flex>
+    <span>Angular2 Firebase App Setting</span>
+    <span flex></span>
+    <!--<a md-icon-button mdTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><md-icon>chrome_reader_mode</md-icon></a>
+    <a md-icon-button mdTooltip="Github" href="https://github.com/teradata/covalent" target="_blank"><md-icon svgIcon="assets:github"></md-icon></a>-->
+  </div>
+  <md-card class="bgc-lime-50">
+      <md-tab-group md-stretch-tabs [selectedIndex]="selIndex">
+      <md-tab>
+        <template md-tab-label>App Information</template>
+        <app-firebase-info (changeIndex)="getIndex($event)" (modelEnable)="enableModel($event)"></app-firebase-info>
+        <!--<button (click)="changeTab()">Change Tab</button>-->
+      </md-tab>
+      <md-tab [disabled]="modelDisable">
+        <template md-tab-label>Model Information</template>
+        <app-firebase-models (widgetsEnable)="enableWidgets($event)"></app-firebase-models>
+      </md-tab>
+      <md-tab [disabled]="widgetsDisable">
+        <template md-tab-label>Widgets Selection</template>
+        <app-firebase-widgets></app-firebase-widgets>
+        <button md-raised-button color="primary" (click)="generateJson()">Generate App</button>
+        <button md-raised-button color="primary" (click)="downloadItem()">Download App</button>
+      </md-tab>
+   </md-tab-group>
+   
+  </md-card>
+  <td-layout-footer>
+    <div layout="row" layout-align="start center">
+      <span class="md-caption">Copyright &copy; 2017 Iphoidtech Pvt. Ltd. All rights reserved</span>
+      <span flex></span>
+      <md-icon class="md-icon-ux" svgIcon="assets:covalent-mark"></md-icon>
+    </div>
+  </td-layout-footer>
+</td-layout-nav>

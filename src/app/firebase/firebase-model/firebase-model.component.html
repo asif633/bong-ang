@@ -1,0 +1,30 @@
+<md-card *ngIf="selModel">
+  <md-card-title>Add or Update Model</md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <form #userForm="ngForm">
+      <div layout="row" layout-margin>
+        <md-input-container flex>
+          <input md-input
+                      #modelNameElement
+                      #modelNameControl="ngModel"
+                      type="text" 
+                      placeholder="Model Name" 
+                      [(ngModel)]="selModel.name" 
+                      name="model_name" 
+                      maxlength="30" 
+                      required>
+              <md-hint align="start">
+                <span [hidden]="modelNameControl.pristine || !modelNameControl.errors?.required" class="tc-red-600">Display Name is required!</span>
+              </md-hint>
+              <md-hint align="end">{{modelNameElement.value.length}} / 20</md-hint>
+        </md-input-container>
+      </div>
+    </form>
+  </md-card-content>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <button md-raised-button color="primary" [disabled]="!userForm.form.valid" (click)="submit()">Submit</button>
+    <!--<button md-raised-button color="warn" *ngIf="!addOrUpdate" (click)="delete()">Delete</button>-->
+  </md-card-actions>
+</md-card>

@@ -1,0 +1,30 @@
+  <td-expansion-panel label="Add your models" sublabel="close panel when done" expand="true"> 
+    <div layout-gt-md="row" layout-margin>
+      <div flex-gt-xs="50">
+        <md-card>
+          <md-card-title>Models</md-card-title>
+          <md-divider></md-divider>
+          <md-card-content>
+            <td-data-table
+              [data]="data$ | async"
+              [columns]="columns"
+              [selectable]="true"
+              [multiple]="false"
+              [sortable]="false"
+              (rowSelect)="selectEvent($event)">
+            </td-data-table>
+          </md-card-content>
+          <md-divider></md-divider>
+          <md-card-actions>
+            <button md-raised-button color="primary" (click)="addNew()">Add New</button>
+          </md-card-actions>
+      </md-card>
+      </div>
+      <div flex-gt-xs="50">
+        <app-firebase-model [selModel]="selectedModel"></app-firebase-model>
+      </div>
+    </div>
+  </td-expansion-panel>
+  <td-expansion-panel label="Add model fields" sublabel="close panel when done" [expand]="modelSelected" [disabled]="!modelSelected"> 
+        <app-firebase-fields [selModel]="selectedModel"></app-firebase-fields>
+  </td-expansion-panel>

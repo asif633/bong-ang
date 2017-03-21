@@ -1,0 +1,100 @@
+<md-card>
+  <md-card-title>Create a new firebase app</md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <form #userForm="ngForm">
+      <div layout="row" layout-margin>
+        <md-input-container flex>
+          <input md-input
+                      #appNameElement
+                      #appNameControl="ngModel"
+                      type="text" 
+                      placeholder="appName Name" 
+                      [(ngModel)]="appInfo.appName" 
+                      name="app_name" 
+                      maxlength="30" 
+                      required>
+              <md-hint align="start">
+                <span [hidden]="appNameControl.pristine || !appNameControl.errors?.required" class="tc-red-600">appName is required!</span>
+              </md-hint>
+              <md-hint align="end">{{appNameElement.value.length}} / 20</md-hint>
+        </md-input-container>
+      </div>
+      <div layout="row" layout-margin>
+        <div flex-gt-xs="50" class="push-left-xs">
+          <md-select required="true" placeholder="Css Framework" [(ngModel)]="appInfo.cssFramework"  name="type">
+                  <md-option *ngFor="let cssf of cssFrameworks" [value]="cssf">
+                  {{cssf}}
+                  </md-option>
+          </md-select>
+        </div>
+      </div>
+      <div layout="row" layout-margin class="push-top-md">
+        <div flex-gt-xs="50">
+            <div layout="row" layout-margin>
+                <div flex-gt-xs="40" class="pull-left-xs">
+                  <md-select  required="true" placeholder="Primary Color" [(ngModel)]="appInfo.primaryColor"  name="primaryColor">
+                      <md-option *ngFor="let color of colors" [value]="color">
+                        <div class="bgc-{{color}}-700 pad-xs"><label>bgc-{{color}}</label></div>
+                      </md-option>
+                  </md-select>           
+                </div>
+                <div flex-gt-xs="40">
+                  <md-select  required="true" placeholder="Primary Hue" [(ngModel)]="appInfo.primaryhue"  name="primaryhue">
+                      <md-option *ngFor="let hue of hues" [value]="hue">
+                        {{hue}}
+                      </md-option>
+                  </md-select>           
+                </div>
+            </div>
+            <div layout="row" layout-margin class="push-top-md">
+                <div flex-gt-xs="40" class="pull-left-xs">
+                    <md-select class="push-bottom-sm" required="true" placeholder="Secondary Color" [(ngModel)]="appInfo.secondaryColor"  name="secondaryColor">
+                      <md-option *ngFor="let color of colors" [value]="color">
+                        <div class="bgc-{{color}}-700 pad-xs"><label>bgc-{{color}}</label></div>
+                      </md-option>
+                  </md-select>   
+                </div>
+                <div flex-gt-xs="40">
+                  <md-select required="true" placeholder="Secondary Hue" [(ngModel)]="appInfo.secondaryhue"  name="secondaryhue">
+                      <md-option *ngFor="let hue of hues" [value]="hue">
+                        {{hue}}
+                      </md-option>
+                  </md-select>           
+                </div>
+            </div>
+        </div>
+        <div flex-gt-xs="50">
+            <md-card class="top-toolbar">
+              <md-toolbar color="primary" class="relative bgc-{{appInfo.primaryColor}}-{{appInfo.primaryhue}}">
+                <md-toolbar-row>
+                  <span></span>
+                </md-toolbar-row>
+                <md-toolbar-row>
+                  <span class="tc-lime-50">App Usage</span>
+                </md-toolbar-row>
+                <button md-fab class="md-fab md-fab-position-bottom-right tc-lime-50 bgc-{{appInfo.secondaryColor}}-{{appInfo.secondaryhue}}">
+                  <md-icon>add</md-icon>
+                </button>
+              </md-toolbar>
+              <md-card-content>
+                <h3 class="md-title tc-{{appInfo.secondaryColor}}-{{appInfo.secondaryhue}}">View title</h3>
+                <p>
+                  When using a primary color in your palette, this color should be the most widely used across all screens and components.
+                </p>
+                <p>
+                  Palettes with a secondary color may use this color to indicate a related action or information.
+                </p>
+                <p>Contrast color in demo is white and static, it will change automatically according to light theme in you app.</p>
+              </md-card-content>
+            </md-card>
+        </div>
+      </div>
+             
+</form>
+  </md-card-content>
+    <md-card-actions>
+      <button md-raised-button color="primary" [disabled]="!userForm.form.valid" (click)="submit()">Save & Go To Next Step</button>
+    </md-card-actions>
+</md-card>
+

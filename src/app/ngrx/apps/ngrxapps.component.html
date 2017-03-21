@@ -1,0 +1,18 @@
+<md-card>
+  <md-card-title>Apps</md-card-title>
+  <md-divider></md-divider>
+  <md-card-content>
+    <td-data-table
+      [data]="data"
+      [columns]="columns"
+      [selectable]="true"
+      [multiple]="false"
+      [sortable]="false"
+      (rowSelect)="selectEvent($event)">
+    </td-data-table>
+  </md-card-content>
+  <md-divider></md-divider>
+  <md-card-actions>
+    <button md-raised-button color="accent" (click)="addNew()">Add New App</button>
+  </md-card-actions>
+</md-card>

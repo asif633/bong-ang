@@ -1,0 +1,21 @@
+<div layout-gt-md="row" layout-margin>
+  <div flex-gt-xs="50">
+      <app-ngrxtables 
+          [data]="tables$ | async" 
+          (selectedTable)="selectTable($event)"
+          (addUpdate)="addOrUpdateTableEvent($event)"                   
+          >
+      </app-ngrxtables>
+  </div>
+  <div flex-gt-xs="50">
+    <app-ngrxtable
+              [selTable]="selTable"
+              [addOrUpdate]="addOrUpdateTable"
+              (addSubmit)="addTable($event)"
+              (updateSubmit)="updateTable($event)"
+              (deleteSubmit)="deleteTable($event)"
+              >
+    </app-ngrxtable>
+  </div>
+</div>
+     

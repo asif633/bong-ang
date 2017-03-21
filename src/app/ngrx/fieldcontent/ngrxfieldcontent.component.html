@@ -1,0 +1,26 @@
+<div layout-gt-md="row" layout-margin>
+  <div flex-gt-xs="50">
+      <md-select placeholder="Select Table" [ngModel]="selTable" (ngModelChange)="onTableSelect($event)">
+        <md-option *ngFor="let table of tables$ | async" [value]="table">
+          {{ table.tableName }}
+        </md-option>
+      </md-select>
+      <app-ngrxfields 
+          [data]="fields$ | async" 
+          (selectedField)="selectField($event)"
+          (addUpdate)="addOrUpdateFieldEvent($event)"                   
+          >
+      </app-ngrxfields>
+  </div>
+  <div flex-gt-xs="50">
+    <app-ngrxfield
+              [selField]="selField"
+              [addOrUpdate]="addOrUpdateField"
+              (addSubmit)="addField($event)"
+              (updateSubmit)="updateField($event)"
+              (deleteSubmit)="deleteField($event)"
+              >
+    </app-ngrxfield>
+  </div>
+</div>
+     
